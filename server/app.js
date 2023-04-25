@@ -19,13 +19,22 @@ app.get('/get/v1/get_player_average/', (request, response) => {
         .catch(err => console.log(err));
 })
 
-// app.post('/put/v1/put_player_data/', (request, response) => {
-//     const db = dbService.getDbServiceInstance();
+app.post('/put/v1/put_player_data/', (request, response) => {
+    const db = dbService.getDbServiceInstance();
 
-//     const result = db.PutPlayersData();
-//     result
-//         .then(data => response.json({ data: data }))
-//         .catch(err => console.log(err));
-// })
+    const result = db.PutPlayersData();
+    result
+        .then(data => response.json({ data: data }))
+        .catch(err => console.log(err));
+})
+
+app.get('/get/v1/get_player_details', (request, response) => {
+    const db = dbService.getDbServiceInstance();
+
+    const result = db.getFullDetails();
+    result
+        .then(data => response.json({ data: data }))
+        .catch(err => console.log(err));
+})
 
 app.listen(process.env.PORT, () => console.log('app is running'));
